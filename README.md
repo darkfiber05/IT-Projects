@@ -1,4 +1,4 @@
-# IT Projects — Madara
+# IT Projects — Aidan Boynton
 
 A collection of full-stack web projects I've designed, built, and deployed — covering frontend design, backend/database integration, automation, and client-facing SaaS-style products.
 
