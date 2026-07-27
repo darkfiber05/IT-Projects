@@ -15,9 +15,9 @@ A premium agency-style marketing site for a web development service business, of
 - **Live:** https://cbwebservices.intellivn.com
 
 ### 🏥 [HMI Hackathon — Asynchronous Telehealth Platform](./hmi-hackathon-telehealth)
-A telehealth platform prototype built for a hackathon, featuring patient/doctor dashboards, drone delivery tracking, and an interactive body-pain-map SVG selector for symptom reporting.
-- **Stack:** Google AI Studio app
-- **Demo:** link/screenshots inside project folder
+An asynchronous telehealth platform prototype built for a hackathon, tackling the problem of limited patient access when telehealth relies solely on scheduled video calls. Features patient/doctor dashboards, drone delivery tracking with live GPS, an interactive body-pain-map SVG selector for symptom reporting, and a 3D D3.js globe for provider region selection.
+- **Stack:** Google AI Studio app (React/TypeScript, D3.js + TopoJSON, custom SVG)
+- **Live:** https://ai.studio/apps/6921a4a0-b430-4eb8-ab46-018c9ffa95cd
 
 ---
 
