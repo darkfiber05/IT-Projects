@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College Bound Landscaping Service</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --forest: #1B4D2E; --sage: #4A7C59; --light-sage: #7AAB8A;
+    --cream: #F5F0E8; --pale-green: #EAF2EC; --gold: #C8A84B;
+    --text-dark: #1A2B1F; --text-mid: #3D5A45;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(27,77,46,0.97); backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 64px; box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-brand svg { width: 28px; height: 28px; }
+  .nav-brand span { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; color: var(--cream); letter-spacing: 0.02em; line-height: 1.2; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: rgba(245,240,232,0.8); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--forest) !important; padding: 8px 20px; border-radius: 4px; font-weight: 700 !important; }
+  .nav-cta:hover { background: #dbb855 !important; }
+
+  /* HERO */
+  .hero { min-height: 100vh; background: var(--forest); display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative; overflow: hidden; padding-top: 64px; }
+  .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&auto=format&fit=crop&q=80') center/cover no-repeat; opacity: 0.18; }
+  .hero-left { position: relative; z-index: 2; padding: 80px 60px 80px 80px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(200,168,75,0.15); border: 1px solid rgba(200,168,75,0.4); color: var(--gold); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; margin-bottom: 28px; }
+  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2.8rem,5vw,4.2rem); line-height: 1.05; color: var(--cream); margin-bottom: 24px; letter-spacing: -0.02em; }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero-sub { font-size: 1.1rem; color: rgba(245,240,232,0.72); line-height: 1.65; margin-bottom: 40px; max-width: 440px; }
+  .hero-pills { display: flex; gap: 12px; margin-bottom: 44px; flex-wrap: wrap; }
+  .pill { display: flex; align-items: center; gap: 6px; background: rgba(74,124,89,0.3); border: 1px solid rgba(74,124,89,0.6); color: rgba(245,240,232,0.9); font-size: 0.82rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.04em; }
+  .pill::before { content: '✓'; color: var(--gold); font-size: 0.75rem; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--forest); font-weight: 700; font-size: 0.9rem; padding: 14px 28px; border-radius: 4px; text-decoration: none; letter-spacing: 0.04em; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(200,168,75,0.35); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,168,75,0.45); }
+  .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: rgba(245,240,232,0.8); font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: color 0.2s; padding: 14px 4px; }
+  .btn-ghost:hover { color: var(--cream); }
+  .hero-right { position: relative; z-index: 2; padding: 80px 80px 80px 40px; display: flex; justify-content: center; }
+  .hero-card { background: rgba(245,240,232,0.06); border: 1px solid rgba(245,240,232,0.12); border-radius: 16px; padding: 36px; width: 100%; max-width: 380px; backdrop-filter: blur(10px); }
+  .hero-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--cream); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(245,240,232,0.12); }
+  .price-row { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(245,240,232,0.08); }
+  .price-icon { width: 44px; height: 44px; background: rgba(74,124,89,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+  .price-info { flex: 1; }
+  .price-label { font-size: 0.78rem; font-weight: 700; color: rgba(245,240,232,0.55); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px; }
+  .price-name { font-size: 0.95rem; font-weight: 600; color: var(--cream); }
+  .price-amount { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold); text-align: right; }
+  .price-unit { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; color: rgba(245,240,232,0.45); text-transform: uppercase; letter-spacing: 0.08em; display: block; text-align: right; margin-top: -2px; }
+  .hero-card-note { margin-top: 20px; font-size: 0.8rem; color: rgba(245,240,232,0.5); text-align: center; line-height: 1.5; }
+
+  /* WAVE */
+  .wave-divider { display: block; width: 100%; overflow: hidden; line-height: 0; background: var(--forest); }
+  .wave-divider svg { display: block; }
+
+  /* SERVICES */
+  #services { background: var(--pale-green); padding: 100px 80px; }
+  .section-eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); margin-bottom: 14px; }
+  .section-title { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2rem,3.5vw,3rem); color: var(--text-dark); line-height: 1.1; margin-bottom: 16px; }
+  .section-sub { color: var(--text-mid); font-size: 1rem; line-height: 1.65; max-width: 520px; margin-bottom: 60px; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 20px; }
+  .service-card { background: white; border-radius: 12px; padding: 32px 28px; border: 1px solid rgba(74,124,89,0.12); transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--sage); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(27,77,46,0.1); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { width: 52px; height: 52px; background: var(--pale-green); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 20px; }
+  .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text-dark); margin-bottom: 10px; }
+  .service-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* WHY US */
+  #why { background: var(--forest); padding: 100px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .why-left .section-title { color: var(--cream); }
+  .why-left .section-eyebrow { color: var(--gold); }
+  .why-left .section-sub { color: rgba(245,240,232,0.65); max-width: 420px; margin-bottom: 0; }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .why-item { background: rgba(245,240,232,0.06); border: 1px solid rgba(245,240,232,0.1); border-radius: 12px; padding: 24px; transition: background 0.2s; }
+  .why-item:hover { background: rgba(245,240,232,0.1); }
+  .why-check { width: 36px; height: 36px; background: var(--sage); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; color: white; font-size: 1rem; }
+  .why-item h4 { font-size: 0.92rem; font-weight: 700; color: var(--cream); margin-bottom: 6px; line-height: 1.3; }
+  .why-item p { font-size: 0.8rem; color: rgba(245,240,232,0.55); line-height: 1.5; }
+
+  /* HOW IT WORKS — 3 LIVE STEPS */
+  #how { background: var(--cream); padding: 100px 80px; }
+  #how .section-title { text-align: center; }
+  #how .section-eyebrow { display: block; text-align: center; }
+  #how > .section-sub { margin: 0 auto 60px; text-align: center; }
+
+  .steps-tabs { display: flex; justify-content: center; gap: 0; margin-bottom: 48px; border-bottom: 2px solid rgba(74,124,89,0.15); }
+  .step-tab { padding: 14px 36px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; border: none; background: none; color: var(--text-mid); border-bottom: 3px solid transparent; margin-bottom: -2px; transition: color 0.2s, border-color 0.2s; }
+  .step-tab.active { color: var(--forest); border-bottom-color: var(--forest); }
+
+  .step-panel { display: none; }
+  .step-panel.active { display: block; }
+
+  /* STEP 1 — Photo Upload */
+  .photo-upload-area {
+    max-width: 620px; margin: 0 auto;
+    background: white; border-radius: 16px; padding: 40px;
+    box-shadow: 0 4px 30px rgba(27,77,46,0.07);
+    border: 1px solid rgba(74,124,89,0.12);
+  }
+  .photo-upload-area h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text-dark); margin-bottom: 8px; }
+  .photo-upload-area p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; }
+
+  .drop-zone {
+    border: 2px dashed rgba(74,124,89,0.35); border-radius: 12px; padding: 48px 24px;
+    text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; position: relative;
+  }
+  .drop-zone.dragover { border-color: var(--sage); background: var(--pale-green); }
+  .drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .drop-zone-icon { font-size: 2.5rem; margin-bottom: 12px; }
+  .drop-zone strong { display: block; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 4px; }
+  .drop-zone span { font-size: 0.82rem; color: var(--text-mid); }
+
+  .photo-previews { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+  .photo-preview { width: 80px; height: 80px; border-radius: 8px; object-fit: cover; border: 2px solid var(--pale-green); }
+
+  .upload-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+  .upload-fields .form-group { margin-bottom: 0; }
+
+  /* STEP 2 — Quote is sent by you, just UI explanation */
+  .step-info-box {
+    max-width: 620px; margin: 0 auto;
+    background: white; border-radius: 16px; padding: 48px 40px;
+    box-shadow: 0 4px 30px rgba(27,77,46,0.07);
+    border: 1px solid rgba(74,124,89,0.12);
+    text-align: center;
+  }
+  .step-info-box .step-big-icon { font-size: 3.5rem; margin-bottom: 20px; }
+  .step-info-box h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text-dark); margin-bottom: 12px; }
+  .step-info-box p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.7; max-width: 440px; margin: 0 auto 24px; }
+  .timeline { display: flex; flex-direction: column; gap: 12px; text-align: left; max-width: 360px; margin: 0 auto; }
+  .tl-item { display: flex; align-items: flex-start; gap: 12px; font-size: 0.87rem; color: var(--text-mid); }
+  .tl-dot { width: 24px; height: 24px; background: var(--pale-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: var(--sage); flex-shrink: 0; margin-top: 1px; }
+
+  /* STEP 3 — Quote Form */
+  .quote-form-wrap {
+    max-width: 620px; margin: 0 auto;
+    background: white; border-radius: 16px; padding: 40px;
+    box-shadow: 0 4px 30px rgba(27,77,46,0.07);
+    border: 1px solid rgba(74,124,89,0.12);
+  }
+  .quote-form-wrap h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text-dark); margin-bottom: 8px; }
+  .quote-form-wrap > p { font-size: 0.88rem; color: var(--text-mid); margin-bottom: 28px; line-height: 1.6; }
+
+  /* SHARED FORM STYLES */
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-mid); }
+  .form-group input, .form-group select, .form-group textarea {
+    border: 1.5px solid rgba(74,124,89,0.2); border-radius: 6px; padding: 10px 14px;
+    font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-dark);
+    background: var(--pale-green); transition: border-color 0.2s; outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--sage); background: white; }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-submit {
+    width: 100%; background: var(--forest); color: var(--cream); border: none;
+    border-radius: 6px; padding: 14px; font-family: 'Inter', sans-serif;
+    font-size: 0.9rem; font-weight: 700; letter-spacing: 0.06em; cursor: pointer;
+    transition: background 0.2s; margin-top: 4px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .form-submit:hover:not(:disabled) { background: var(--sage); }
+  .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .form-status { margin-top: 16px; padding: 12px 16px; border-radius: 8px; font-size: 0.87rem; font-weight: 600; display: none; }
+  .form-status.success { background: #d4edda; color: #155724; display: block; }
+  .form-status.error { background: #f8d7da; color: #721c24; display: block; }
+  .form-status.loading { background: var(--pale-green); color: var(--text-mid); display: block; }
+
+  /* CONTACT STRIP */
+  #contact {
+    background: var(--sage); padding: 80px 80px;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;
+  }
+  .contact-strip-left .section-eyebrow { color: rgba(245,240,232,0.7); }
+  .contact-strip-left .section-title { color: var(--cream); font-size: 1.8rem; margin-bottom: 8px; }
+  .contact-strip-left p { color: rgba(245,240,232,0.75); font-size: 0.9rem; }
+  .contact-methods { display: flex; flex-direction: column; gap: 14px; }
+  .contact-method { display: flex; align-items: center; gap: 14px; color: var(--cream); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: opacity 0.2s; }
+  .contact-method:hover { opacity: 0.8; }
+  .contact-method-icon { width: 40px; height: 40px; background: rgba(245,240,232,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+
+  /* FOOTER */
+  footer { background: var(--text-dark); color: rgba(245,240,232,0.6); padding: 40px 80px; display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--cream); font-weight: 700; }
+  .footer-tagline { margin-top: 4px; font-size: 0.78rem; }
+  .footer-service { text-align: right; font-size: 0.8rem; color: rgba(245,240,232,0.5); }
+  .footer-service strong { display: block; color: var(--gold); font-weight: 700; margin-bottom: 2px; }
+
+  /* SETUP BANNER */
+  .setup-banner {
+    background: #fff3cd; border-bottom: 2px solid #ffc107;
+    padding: 12px 80px; font-size: 0.82rem; color: #856404;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .setup-banner strong { font-weight: 700; }
+  .setup-banner a { color: #856404; font-weight: 600; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 60px 28px 40px; }
+    .hero-right { padding: 0 28px 60px; }
+    .hero-card { max-width: 100%; }
+    #services { padding: 70px 28px; }
+    #why { grid-template-columns: 1fr; padding: 70px 28px; gap: 50px; }
+    .why-grid { grid-template-columns: 1fr; }
+    #how { padding: 70px 28px; }
+    .step-tab { padding: 12px 18px; font-size: 0.75rem; }
+    .upload-fields { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    #contact { padding: 60px 28px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 40px 28px; }
+    .footer-service { text-align: center; }
+    .setup-banner { padding: 12px 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     ⚙️  CONFIGURATION — FILL IN YOUR CREDENTIALS BELOW
+     ═══════════════════════════════════════════════════ -->
+<script>
+const CONFIG = {
+  // ── TWILIO (for photo texts to your phone) ──────────────────────────────
+  TWILIO_ACCOUNT_SID:  'YOUR_TWILIO_ACCOUNT_SID',
+  TWILIO_AUTH_TOKEN:   'YOUR_TWILIO_AUTH_TOKEN',
+  TWILIO_FROM_NUMBER:  'YOUR_TWILIO_PHONE_NUMBER',
+  TWILIO_TO_NUMBER:    '+16789977134',
+
+  // ── IMGBB (free image host so Twilio can MMS the photo) ─────────────────
+  IMGBB_API_KEY:       'YOUR_IMGBB_API_KEY',
+
+  // ── SUPABASE (quote form database) ──────────────────────────────────────
+  SUPABASE_URL: 'https://ddqektnbtoczsqsnmern.supabase.co',
+  SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRkcWVrdG5idG9jenNxc25tZXJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3MjE2ODgsImV4cCI6MjA5NzI5NzY4OH0.fWD20fSXbhzaWWtVBGKRZJv6IeijEK30UlnT-Tw9hN8', // ← get this from Supabase → Project Settings → API → anon/public key
+};
+</script>
+
+<!-- Setup reminder banner (remove once configured) -->
+<div class="setup-banner" id="setupBanner">
+  ⚙️ <strong>Owner setup needed:</strong> Fill in your Twilio and ImgBB keys in the CONFIG block. Supabase is already connected! <a href="#setup-guide" onclick="document.getElementById('setupGuide').style.display='block'">View setup guide ↓</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <svg viewBox="0 0 28 28" fill="none"><path d="M14 4C10 4 7 7 7 11C7 14.5 9.5 17.5 14 20C18.5 17.5 21 14.5 21 11C21 7 18 4 14 4Z" fill="#C8A84B"/><path d="M14 4C12 4 9 8 9 13C9 16 11 18.5 14 20C17 18.5 19 16 19 13C19 8 16 4 14 4Z" fill="#4A7C59"/><rect x="13" y="19" width="2" height="6" rx="1" fill="#7AAB8A"/></svg>
+    <span>College Bound<br>Landscaping</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Serving Buford &amp; Surrounding Areas</div>
+    <h1>Your Yard,<br><em>Transformed.</em></h1>
+    <p class="hero-sub">Professional landscaping from a hardworking, college-bound crew committed to clean, reliable results at prices that make sense.</p>
+    <div class="hero-pills">
+      <span class="pill">Professional</span>
+      <span class="pill">Reliable</span>
+      <span class="pill">Affordable</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#how" class="btn-primary">Get a Free Quote <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="tel:6789977134" class="btn-ghost"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 3.5A1.5 1.5 0 013.5 2h.878c.414 0 .76.3.816.708l.422 2.952a.833.833 0 01-.24.777L4.2 7.2a9.125 9.125 0 004.6 4.6l.763-1.177a.833.833 0 01.777-.24l2.952.422c.408.056.708.402.708.816V13.5A1.5 1.5 0 0112.5 15C6.701 15 1 9.299 1 3.5A1.5 1.5 0 012 3.5z" fill="currentColor"/></svg> 678-997-7134</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <h3>Install Pricing</h3>
+      <div class="price-row">
+        <div class="price-icon">🌿</div>
+        <div class="price-info"><div class="price-label">Ground Cover</div><div class="price-name">Mulch Installation</div></div>
+        <div><div class="price-amount">$32</div><div class="price-unit">per cubic yd</div></div>
+      </div>
+      <div class="price-row">
+        <div class="price-icon">🌾</div>
+        <div class="price-info"><div class="price-label">Natural Cover</div><div class="price-name">Pine Straw Install</div></div>
+        <div><div class="price-amount">$4</div><div class="price-unit">per bale</div></div>
+      </div>
+      <p class="hero-card-note">All other services quoted free.<br>Upload yard photos below for a fast estimate.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wave-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none" width="100%" height="80"><path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#EAF2EC"/></svg></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-eyebrow">What We Do</div>
+  <h2 class="section-title">Our Services</h2>
+  <p class="section-sub">From fresh mulch to crisp edges, we handle the details that make your yard the pride of the neighborhood.</p>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-icon">🪣</div><h3>Mulch Installation</h3><p>Fresh mulch beds that lock in moisture, suppress weeds, and give every yard a polished look — at $32 per cubic yard.</p></div>
+    <div class="service-card"><div class="service-icon">🌾</div><h3>Pine Straw Installation</h3><p>Classic Southern curb appeal. We lay and tuck pine straw neatly around beds and trees at $4 per bale.</p></div>
+    <div class="service-card"><div class="service-icon">✂️</div><h3>Clean Edging</h3><p>Sharp, defined edges along driveways, walkways, and beds — the finishing touch that takes a yard from good to great.</p></div>
+    <div class="service-card"><div class="service-icon">🍃</div><h3>Yard Refresh &amp; Cleanup</h3><p>Seasonal cleanups, debris removal, and general yard refreshes that get your outdoor space looking its best fast.</p></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-left">
+    <div class="section-eyebrow">Why Choose Us</div>
+    <h2 class="section-title">Local, Hardworking &amp; College Bound</h2>
+    <p class="section-sub">We're not a big company — we're local students who take pride in every yard we touch and every relationship we build.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-item"><div class="why-check">✓</div><h4>Local &amp; College Bound</h4><p>Your support directly helps a student reach their educational goals.</p></div>
+    <div class="why-item"><div class="why-check">✓</div><h4>Hardworking &amp; Dependable</h4><p>We show up on time and do what we say — every single visit.</p></div>
+    <div class="why-item"><div class="why-check">✓</div><h4>Professional Results</h4><p>Clean, careful work you'd expect from a seasoned crew.</p></div>
+    <div class="why-item"><div class="why-check">✓</div><h4>Affordable Pricing</h4><p>Transparent rates with no hidden fees. Fair prices for honest work.</p></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS — 3 LIVE STEPS -->
+<section id="how">
+  <div class="section-eyebrow">Book Your Service</div>
+  <h2 class="section-title">Request a Free Quote</h2>
+  <p class="section-sub">Fill out the form below and we'll be in touch within 24 hours to confirm your appointment.</p>
+
+
+
+  <!-- STEP 3: Confirm & Schedule → Google Sheets -->
+  <div class="step-panel active" id="stepPanel3">
+    <div class="quote-form-wrap">
+      <h3>✅ Confirm Your Appointment</h3>
+      <p>Ready to book? Fill out your details below. We'll add you to our schedule and confirm your appointment by text.</p>
+
+      <div class="form-row">
+        <div class="form-group"><label>First Name *</label><input type="text" id="qFirst" placeholder="Jane" required></div>
+        <div class="form-group"><label>Last Name *</label><input type="text" id="qLast" placeholder="Smith" required></div>
+      </div>
+      <div class="form-group"><label>Phone Number *</label><input type="tel" id="qPhone" placeholder="(678) 555-0100" required></div>
+      <div class="form-group"><label>Email Address</label><input type="email" id="qEmail" placeholder="jane@example.com"></div>
+      <div class="form-group"><label>Street Address *</label><input type="text" id="qAddress" placeholder="123 Oak St, Buford, GA 30518" required></div>
+      <div class="form-group"><label>Service Requested *</label>
+        <select id="qService" required>
+          <option value="">Select a service…</option>
+          <option>Mulch Installation ($32/cu yd)</option>
+          <option>Pine Straw Installation ($4/bale)</option>
+          <option>Clean Edging</option>
+          <option>Yard Refresh &amp; Cleanup</option>
+          <option>Multiple Services</option>
+          <option>Not Sure — Need a Quote</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Preferred Date</label><input type="date" id="qDate"></div>
+        <div class="form-group"><label>Best Time to Reach You</label>
+          <select id="qTime"><option value="">Any time</option><option>Morning (8am–12pm)</option><option>Afternoon (12pm–5pm)</option><option>Evening (5pm–8pm)</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label>Additional Notes</label><textarea id="qNotes" placeholder="Anything else we should know about your yard or project…"></textarea></div>
+
+      <button class="form-submit" id="quoteBtn" onclick="submitQuote()">
+        <span>📋 Submit My Request</span>
+      </button>
+      <div class="form-status" id="quoteStatus"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<section id="contact">
+  <div class="contact-strip-left">
+    <div class="section-eyebrow">Reach Out Directly</div>
+    <h2 class="section-title">Questions? Just Call or Text.</h2>
+    <p>We're local and we respond fast.</p>
+  </div>
+  <div class="contact-methods">
+    <a href="tel:6789977134" class="contact-method"><div class="contact-method-icon">📞</div>678-997-7134</a>
+    <a href="mailto:collegeboundlandscaping23@gmail.com" class="contact-method"><div class="contact-method-icon">✉️</div>collegeboundlandscaping23@gmail.com</a>
+    <div class="contact-method"><div class="contact-method-icon">💳</div>Cash, Card &amp; Digital Payments Accepted</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">College Bound Landscaping Service</div>
+    <div class="footer-tagline">Helping keep your neighborhood beautiful, one yard at a time.</div>
+  </div>
+  <div class="footer-service">
+    <strong>Serving Our Neighborhoods With Pride</strong>
+    Buford, GA &amp; Surrounding Areas · 678-997-7134
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     SETUP GUIDE (shown when link is clicked)
+     ═══════════════════════════════════════════ -->
+<div id="setupGuide" style="display:none; background:#1a2b1f; color:#f5f0e8; padding:60px 80px; font-family:monospace; font-size:0.85rem; line-height:1.8;">
+  <h2 style="font-family:'Playfair Display',serif; color:#c8a84b; font-size:1.8rem; margin-bottom:32px;">⚙️ Setup Guide</h2>
+
+  <h3 style="color:#7aab8a; margin-bottom:8px;">1️⃣ ImgBB (Free Image Host — 5 min)</h3>
+  <p>Twilio MMS needs a public URL for photos. ImgBB hosts them free.</p>
+  <ol style="padding-left:20px; margin:8px 0 24px;">
+    <li>Go to <strong>https://api.imgbb.com</strong> → click "Get API key" → sign up free</li>
+    <li>Copy your API key and paste it as <strong>IMGBB_API_KEY</strong> in the CONFIG block</li>
+  </ol>
+
+  <h3 style="color:#7aab8a; margin-bottom:8px;">2️⃣ Twilio (Free Trial — 10 min)</h3>
+  <ol style="padding-left:20px; margin:8px 0 24px;">
+    <li>Go to <strong>https://www.twilio.com</strong> → sign up for a free trial</li>
+    <li>Verify your real phone number (678-997-7134) during sign-up</li>
+    <li>Get a free Twilio phone number (this is what sends the texts)</li>
+    <li>From your Twilio Console dashboard, copy:
+      <ul style="margin:4px 0 4px 20px;">
+        <li>Account SID → paste as <strong>TWILIO_ACCOUNT_SID</strong></li>
+        <li>Auth Token → paste as <strong>TWILIO_AUTH_TOKEN</strong></li>
+        <li>Your Twilio number → paste as <strong>TWILIO_FROM_NUMBER</strong> (format: +1xxxxxxxxxx)</li>
+      </ul>
+    </li>
+    <li>⚠️ Free trial only sends to verified numbers. Upgrade ($15/mo) to receive from anyone.</li>
+  </ol>
+
+  <h3 style="color:#7aab8a; margin-bottom:8px;">3️⃣ Google Sheets (Free — 15 min)</h3>
+  <ol style="padding-left:20px; margin:8px 0 24px;">
+    <li>Go to <strong>https://sheets.google.com</strong> → create a new sheet named "Landscaping Leads"</li>
+    <li>Add these headers in Row 1 (copy exactly):
+      <br><code style="background:#2d4a35; padding:4px 8px; border-radius:4px; display:inline-block; margin:6px 0;">
+        Timestamp | First Name | Last Name | Phone | Email | Address | Service | Preferred Date | Best Time | Notes
+      </code>
+    </li>
+    <li>Go to <strong>Extensions → Apps Script</strong></li>
+    <li>Delete the default code and paste this:<br>
+      <pre style="background:#2d4a35; padding:16px; border-radius:8px; margin:8px 0; overflow-x:auto; white-space:pre-wrap;">
+function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+  sheet.appendRow([
+    data.timestamp, data.firstName, data.lastName,
+    data.phone, data.email, data.address,
+    data.service, data.date, data.time, data.notes
+  ]);
+  return ContentService
+    .createTextOutput(JSON.stringify({result:'success'}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function doGet(e) {
+  return ContentService
+    .createTextOutput(JSON.stringify({result:'ok'}))
+    .setMimeType(ContentService.MimeType.JSON);
+}</pre>
+    </li>
+    <li>Click <strong>Deploy → New deployment → Web app</strong></li>
+    <li>Set "Execute as" = <strong>Me</strong>, "Who has access" = <strong>Anyone</strong></li>
+    
+  </ol>
+
+  <h3 style="color:#7aab8a; margin-bottom:8px;">4️⃣ Hosting (Free — 5 min)</h3>
+  <p>Upload this single HTML file to <strong>Netlify Drop</strong> (drag &amp; drop at netlify.com/drop) or <strong>GitHub Pages</strong>. You'll get a free public URL instantly.</p>
+
+  <p style="margin-top:32px; color:#7aab8a;">Once all 4 keys are filled in, delete or hide this setup guide and the yellow banner at the top.</p>
+</div>
+
+<!-- ═══════════════════
+     JAVASCRIPT
+     ═══════════════════ -->
+<script>
+// ── Submit quote form → Supabase ──────────────────────────────
+async function submitQuote() {
+  const firstName = document.getElementById('qFirst').value.trim();
+  const lastName  = document.getElementById('qLast').value.trim();
+  const phone     = document.getElementById('qPhone').value.trim();
+  const email     = document.getElementById('qEmail').value.trim();
+  const address   = document.getElementById('qAddress').value.trim();
+  const service   = document.getElementById('qService').value;
+  const date      = document.getElementById('qDate').value;
+  const time      = document.getElementById('qTime').value;
+  const notes     = document.getElementById('qNotes').value.trim();
+  const status    = document.getElementById('quoteStatus');
+  const btn       = document.getElementById('quoteBtn');
+
+  if (!firstName || !lastName || !phone || !address || !service) {
+    showStatus(status, 'Please fill in all required fields (marked with *).', 'error');
+    return;
+  }
+
+  btn.disabled = true;
+  showStatus(status, '📋 Submitting your request…', 'loading');
+
+  try {
+    const res = await fetch(CONFIG.SUPABASE_URL + '/rest/v1/landscaping_database', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': CONFIG.SUPABASE_KEY,
+        'Authorization': 'Bearer ' + CONFIG.SUPABASE_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        timestamp:      new Date().toLocaleString('en-US', {timeZone:'America/New_York'}),
+        first_name:     firstName,
+        last_name:      lastName,
+        phone:          phone,
+        email:          email,
+        address:        address,
+        service:        service,
+        preferred_date: date || 'Flexible',
+        best_time:      time || 'Any time',
+        notes:          notes || '—'
+      })
+    });
+
+    if (!res.ok) {
+      const errData = await res.json();
+      throw new Error(errData.message || 'Supabase error ' + res.status);
+    }
+
+    showStatus(status, '✅ Request submitted! We\'ll be in touch within 24 hours to confirm your appointment.', 'success');
+    btn.disabled = false;
+    ['qFirst','qLast','qPhone','qEmail','qAddress','qNotes'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('qService').value = '';
+    document.getElementById('qDate').value = '';
+    document.getElementById('qTime').value = '';
+
+  } catch (err) {
+    console.error(err);
+    showStatus(status, '❌ Submission failed: ' + err.message, 'error');
+    btn.disabled = false;
+  }
+}
+
+// ── Helpers ───────────────────────────────────────────────────
+function showStatus(el, msg, type) {
+  el.textContent = msg;
+  el.className = 'form-status ' + type;
+}
+</script>
+
+</body>
+</html>
