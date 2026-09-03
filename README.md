@@ -14,6 +14,11 @@ A premium agency-style marketing site for a web development service business, of
 - **Stack:** HTML/CSS/JS, Supabase (lead database), Resend (lead notifications), GoDaddy (subdomain hosting)
 - **Live:** https://cbwebservices.intellivn.com
 
+### 🏠 [MW Hope Center — Nonprofit Website Redesign](./mw-hope-center)
+A full 20-page website redesign for a Tucker, GA nonprofit serving families, youth, and returning citizens across DeKalb and Gwinnett counties. Includes integrated form intake (Jotform), an embedded donation platform (Zeffy), a compressed hero video, and a full SEO/accessibility remediation pass.
+- **Stack:** HTML/CSS/JS, Supabase (Postgres + Edge Functions, form backend), Jotform (Volunteer/Get Help/Contact intake), Zeffy (donations)
+- **Client project:** built end-to-end for College Bound Web Services, from content architecture through deployment
+
 ### 🏥 [HMI Hackathon — Asynchronous Telehealth Platform](./hmi-hackathon-telehealth)
 An asynchronous telehealth platform prototype built for a hackathon, tackling the problem of limited patient access when telehealth relies solely on scheduled video calls. Features patient/doctor dashboards, drone delivery tracking with live GPS, an interactive body-pain-map SVG selector for symptom reporting, and a 3D D3.js globe for provider region selection.
 - **Stack:** Google AI Studio app (React/TypeScript, D3.js + TopoJSON, custom SVG)
