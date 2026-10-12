@@ -20,6 +20,10 @@ A full 20-page website redesign for a Tucker, GA nonprofit serving families, you
 - **Client project:** built end-to-end for College Bound Web Services, from content architecture through deployment
 - **Live:** https://www.mwhopecenter.org/ 
 
+### 📅 [Assignment Reminders — Deadline Tracker & Automated Notifications](./assignment-reminders)
+A deadline tracker and reminder system I built to keep students from missing coursework. Turns D2L calendar exports into a mobile dashboard and sends automatic daily reminder emails. Built in three versions: calendar export, a Twilio SMS prototype, and a free Google Apps Script email version.
+- **Stack:** Google Apps Script (Gmail, triggers, web app), HTML/CSS/JS, Python (iCalendar export); prototype on Cloudflare Workers + R2 + Twilio
+
 ### 🏥 [HMI Hackathon — Asynchronous Telehealth Platform](./hmi-hackathon-telehealth)
 An asynchronous telehealth platform prototype built for a hackathon, tackling the problem of limited patient access when telehealth relies solely on scheduled video calls. Features patient/doctor dashboards, drone delivery tracking with live GPS, an interactive body-pain-map SVG selector for symptom reporting, and a 3D D3.js globe for provider region selection.
 - **Stack:** Google AI Studio app (React/TypeScript, D3.js + TopoJSON, custom SVG)
@@ -31,6 +35,7 @@ An asynchronous telehealth platform prototype built for a hackathon, tackling th
 - Frontend design & responsive UI (HTML/CSS/JS)
 - Database design & integration (Supabase/Postgres, Row Level Security)
 - Serverless backend logic (Supabase Edge Functions)
-- Third-party API integration (Resend for email automation)
+- Third-party API integration (Resend for email automation, Twilio for SMS)
+- Workflow automation & scheduled jobs (Google Apps Script time-based triggers)
 - Deployment & DevOps (Netlify, GoDaddy/cPanel hosting, DNS configuration)
 - Client-facing product design (pricing, lead capture, sales collateral)
