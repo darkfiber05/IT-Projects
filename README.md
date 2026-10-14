@@ -23,6 +23,7 @@ A full 20-page website redesign for a Tucker, GA nonprofit serving families, you
 ### 📅 [Assignment Reminders — Deadline Tracker & Automated Notifications](./assignment-reminders)
 A deadline tracker and reminder system I built to keep students from missing coursework. Turns D2L calendar exports into a mobile dashboard and sends automatic daily reminder emails. Built in three versions: calendar export, a Twilio SMS prototype, and a free Google Apps Script email version.
 - **Stack:** Google Apps Script (Gmail, triggers, web app), HTML/CSS/JS, Python (iCalendar export); prototype on Cloudflare Workers + R2 + Twilio
+- **Live:** https://script.google.com/macros/s/AKfycbyZGO1ZkNbRIl3P-tgkdpeBf5OjcHxAUeJMQDnULf2To5L_3n_UBf16dpmNKGye52p1zQ/exec
 
 ### 🏥 [HMI Hackathon — Asynchronous Telehealth Platform](./hmi-hackathon-telehealth)
 An asynchronous telehealth platform prototype built for a hackathon, tackling the problem of limited patient access when telehealth relies solely on scheduled video calls. Features patient/doctor dashboards, drone delivery tracking with live GPS, an interactive body-pain-map SVG selector for symptom reporting, and a 3D D3.js globe for provider region selection.
